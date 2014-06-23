@@ -1,5 +1,6 @@
 package es.upmcsic.car.usabilityapp.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.sql.Time;
@@ -13,7 +14,7 @@ public class Session {
     private String caregiverId;
     private Time timeOfDay;
     private Date date;//Comentario creo que este campo sobre
-    private double version;
+    private String version;
     private int screenWidth;
     private int screenHeight;
     private int numberTargets;
@@ -26,7 +27,7 @@ public class Session {
     private int videoTime;
     
     List<Target> targetList;
-    int clickFailed;
+	int clickFailed;
     int clickSucceeded;
 
     public Session(){
@@ -34,7 +35,7 @@ public class Session {
         setCaregiverId("");
         setTimeOfDay(new Time(0,0,0));
         setDate(new Date());
-        setVersion(0.0);
+        setVersion("0.0");
         setScreenWidth(0);
         setScreenHeight(0);
         setNumberTargets(0);
@@ -45,9 +46,12 @@ public class Session {
         setInitTask(new Time(0,0,0));
         setFinTask(new Time(0,0,0));
         setVideoTime(0);
+        setTargetList(new ArrayList<Target>());
+        setClickFailed(0);
+        setClickSucceeded(0);
     }
 
-    public Session(String userId, String caregiverId, Time timeOfDay, Date date, double version,
+    /*public Session(String userId, String caregiverId, Time timeOfDay, Date date, String version,
                    int screenWidth, int screenHeight, int numberTargets, double id, int targetSize,
                    int targetDistance, int taskId, Time initTask, Time finTask, int videoTime){
         this.setUserId(userId);
@@ -65,7 +69,7 @@ public class Session {
         this.setInitTask(initTask);
         this.setFinTask(finTask);
         this.setVideoTime(videoTime);
-    }
+    }*/
 
     public String getUserId() {
         return userId;
@@ -103,11 +107,11 @@ public class Session {
         return this;        
     }
 
-    public double getVersion() {
+    public String getVersion() {
         return version;
     }
 
-    public Session setVersion(double version) {
+    public Session setVersion(String version) {
         this.version = version;
         return this;        
     }
@@ -203,20 +207,64 @@ public class Session {
         return this;        
     }
     
-    public static void main(String[] args) {
+    public List<Target> getTargetList() {
+ 		return targetList;
+ 	}
+
+ 	public void setTargetList(List<Target> targetList) {
+ 		this.targetList = targetList;
+ 	}
+
+ 	public int getClickFailed() {
+ 		return clickFailed;
+ 	}
+
+ 	public void setClickFailed(int clickFailed) {
+ 		this.clickFailed = clickFailed;
+ 	}
+
+ 	public int getClickSucceeded() {
+ 		return clickSucceeded;
+ 	}
+
+ 	public void setClickSucceeded(int clickSucceeded) {
+ 		this.clickSucceeded = clickSucceeded;
+ 	}
+    
+   /* public static void main(String[] args) {
         
-   //Comentario ¿qué codigo te gusta mas?
-        
-        //La forma de crear un objeto con tu clase original
-        Session session = new Session("Usuario", "Cuidador", new Time(99999999),
-                new Date(),  21.3, 1024, 768, 40, 0, 40, 40, 33, new Time(999999), new Time(99999), 100);
-        
-        //La forma de crear un objeto con mis modificaciones;  Mas código, pero mas claro
+        //La forma de crear un objeto con mis modificaciones;  Mas codigo, pero mas claro
         Session session2 = new Session();
         session2.setUserId("Usuario").setCaregiverId("Cuidador").setTimeOfDay(new Time(99999999))
-               .setDate(new Date()).setVersion(21.3).setScreenWidth(1024).setScreenHeight(768)
+               .setDate(new Date()).setVersion("21.3").setScreenWidth(1024).setScreenHeight(768)
                .setNumberTargets(40).setId(0).setTargetSize(40)
                .setTargetDistance(40).setTaskId(33).setInitTask(new Time(999999))                
                .setFinTask(new Time(999999)).setVideoTime(100);
+    }*/
+    
+    public String toString(){
+    	String result = "userId "+getUserId()+"\n";
+        result += "caregiverId "+getCaregiverId()+"\n";
+        result += "timeOfDay "+getTimeOfDay()+"\n";
+        result += "date "+getDate()+"\n";
+        result += "version "+getVersion()+"\n";
+        result += "screenWidth "+getScreenWidth()+"\n";
+        result += "screenHeight "+getScreenHeight()+"\n";
+        result += "numberTargets "+getNumberTargets()+"\n";
+        result += "id "+getId()+"\n";
+        result += "targetSize "+getTargetSize()+"\n";
+        result += "targetDistance "+getTargetDistance()+"\n";
+        result += "taskId "+getTaskId()+"\n";
+        result += "initTask "+getInitTask()+"\n";
+        result += "finTask "+getFinTask()+"\n";
+        result += "videoTime "+getVideoTime()+"\n";
+        if(!getTargetList().isEmpty() && null!=getTargetList()){
+	        for(Target g:targetList){
+	        	result += g.toString()+"\n";
+	        }
+        }
+        result += "clickFailed "+getClickFailed()+"\n";
+        result += "clickSucceeded "+getClickSucceeded()+"\n";
+        return result;
     }
 }

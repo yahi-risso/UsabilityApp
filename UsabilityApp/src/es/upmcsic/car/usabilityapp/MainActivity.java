@@ -1,18 +1,17 @@
 package es.upmcsic.car.usabilityapp;
 
-import android.R.anim;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TabHost;
-import android.os.Build;
+import android.widget.Button;
+import es.upmcsic.car.usabilityapp.pruebas.bluetooth.BluetoothActivity;
+import es.upmcsic.car.usabilityapp.xmlvalidator.ValidationActivity;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -61,6 +60,25 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            
+            
+            Button buttonBluetooth = (Button) rootView.findViewById(R.id.buttonBluetooth);
+            buttonBluetooth.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), BluetoothActivity.class);
+                    startActivity(intent);
+                }
+            });
+            
+            Button buttonValidateXML = (Button) rootView.findViewById(R.id.buttonValidate);
+            buttonValidateXML.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), ValidationActivity.class);
+                    startActivity(intent);
+                }
+            });
             
             return rootView;
         }
