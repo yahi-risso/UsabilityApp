@@ -54,11 +54,12 @@ public class ObjectCreatorThread implements Runnable{
 		if(validSession==true && validTarget==true){
 			SessionParser parser = new SessionParser(activity);
 			Session mySession = parser.parseSession();
-			Log.i("SESSION: ", mySession.toString());
-			publishValidationResult(mySession.toString());
+			//Log.i("SESSION: ", mySession.toString());
+			//publishValidationResult(mySession.toString());
+			publishSession(mySession);
 		}
 	}
-	
+
 	public boolean validateWithExtXSDUsingSAX(String xml, String xsd){  //leer de sd. Ahora esta leyendo de raw
 		Log.i("-->>",xml+"-"+xsd);
 		boolean result = true;
@@ -106,4 +107,12 @@ public class ObjectCreatorThread implements Runnable{
         msg.setData(msgBundle);
         resultHandler.sendMessage(msg);
     }
+
+	private void publishSession(Session mySession) {
+		Bundle msgBundle = new Bundle();
+        msgBundle.putSerializable("session", mySession);
+        Message msg = new Message();
+        msg.setData(msgBundle);
+        resultHandler.sendMessage(msg);
+	}
 }

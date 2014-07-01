@@ -6,10 +6,10 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
@@ -35,6 +35,22 @@
         <activity
             android:name="es.upmcsic.car.usabilityapp.xmlvalidator.ValidationActivity"
             android:label="validation" >
+        </activity>
+        <activity
+            android:name="es.upmcsic.car.usabilityapp.pruebas.io.ReadWriteActivity"
+            android:label="read-write" >
+        </activity>
+        <activity
+            android:name="es.upmcsic.car.usabilityapp.pruebas.graphic.GraphicActivity"
+            android:label="graphics" >
+        </activity>
+        <activity
+            android:name="es.upmcsic.car.usabilityapp.pruebas.database.DBActivity"
+            android:label="database" >
+        </activity>
+        <activity
+            android:name="es.upmcsic.car.usabilityapp.pruebas.ui.UIActivity"
+            android:label="interface" >
         </activity>
     </application>
 

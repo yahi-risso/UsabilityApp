@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import es.upmcsic.car.usabilityapp.pruebas.bluetooth.BluetoothActivity;
+import es.upmcsic.car.usabilityapp.pruebas.io.ReadWriteActivity;
+import es.upmcsic.car.usabilityapp.pruebas.ui.UIActivity;
 import es.upmcsic.car.usabilityapp.xmlvalidator.ValidationActivity;
 
 public class MainActivity extends ActionBarActivity {
@@ -80,6 +82,23 @@ public class MainActivity extends ActionBarActivity {
                 }
             });
             
+            Button buttonIO = (Button) rootView.findViewById(R.id.buttonIO);
+            buttonIO.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), ReadWriteActivity.class);
+                    startActivity(intent);
+                }
+            });
+            
+            Button buttonInterface = (Button) rootView.findViewById(R.id.buttonInterface);
+            buttonInterface.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), UIActivity.class);
+                    startActivity(intent);
+                }
+            });
             return rootView;
         }
     }

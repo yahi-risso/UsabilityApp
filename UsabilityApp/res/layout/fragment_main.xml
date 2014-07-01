@@ -16,5 +16,17 @@
         android:layout_height="wrap_content"
         android:text="PROBAR BLUETOOTH"
         android:id="@+id/buttonBluetooth" />
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="READ - WRITE FILE"
+        android:id="@+id/buttonIO" />
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHOW UI"
+        android:id="@+id/buttonInterface" />
 
 </LinearLayout>

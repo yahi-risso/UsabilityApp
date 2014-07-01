@@ -2,13 +2,13 @@ package es.upmcsic.car.usabilityapp.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.io.Serializable;
 import java.sql.Time;
 
 /**
  * Created by 66785338 on 27/05/14.
  */
-public class Session {
+public class Session implements Serializable{
 
     private String userId;
     private String caregiverId;
@@ -26,9 +26,9 @@ public class Session {
     private Time finTask;
     private int videoTime;
     
-    List<Target> targetList;
-	int clickFailed;
-    int clickSucceeded;
+    private ArrayList<Target> targetList;
+	private int clickFailed;
+    private int clickSucceeded;
 
     public Session(){
         setUserId("");
@@ -207,11 +207,11 @@ public class Session {
         return this;        
     }
     
-    public List<Target> getTargetList() {
+    public ArrayList<Target> getTargetList() {
  		return targetList;
  	}
 
- 	public void setTargetList(List<Target> targetList) {
+ 	public void setTargetList(ArrayList<Target> targetList) {
  		this.targetList = targetList;
  	}
 
@@ -219,16 +219,18 @@ public class Session {
  		return clickFailed;
  	}
 
- 	public void setClickFailed(int clickFailed) {
+ 	public Session setClickFailed(int clickFailed) {
  		this.clickFailed = clickFailed;
+ 		return this;
  	}
 
  	public int getClickSucceeded() {
  		return clickSucceeded;
  	}
 
- 	public void setClickSucceeded(int clickSucceeded) {
+ 	public Session setClickSucceeded(int clickSucceeded) {
  		this.clickSucceeded = clickSucceeded;
+ 		return this;
  	}
     
    /* public static void main(String[] args) {

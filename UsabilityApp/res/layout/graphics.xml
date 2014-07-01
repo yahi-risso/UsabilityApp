@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/spinnerTargets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textInfoIntent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines = "8000"
+		android:scrollbars = "vertical"
+        android:text="Hola caracola" />
+
+    <LinearLayout
+        android:id="@+id/layoutGraphicDistance"
+        android:layout_width="match_parent"
+        android:layout_height="401dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layoutGraphicVelocity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

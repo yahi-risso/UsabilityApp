@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.car.upm-csic.es/bioingenieria/Session"    
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.car.upm-csic.es/bioingenieria/Session">  <!-- su URL -->
+	<element name="Session">
+		<complexType>
+<!--Rafael, revisa si estáis de acuerdo uno con el tipo de dato de cada atributo y si es o no requerido el atributo-->
+			<attribute name="videoTime" type="positiveInteger" use="required" />
+			<attribute name="finTask" type="time" use="required"/> <!-- quitar milisegundos , no están soportados en xsd; formato: hh:mm:ss -->
+			<attribute name="initTask" type="time" use="required"/> <!-- quitar milisegundos; formato: hh:mm:ss -->
+			<attribute name="taskId" type="positiveInteger" use="required"/>
+			<attribute name="targetDistance" type="positiveInteger" use="required"/>
+			<attribute name="targetSize" type="positiveInteger" use="required"/>
+			<attribute name="id" type="decimal" use="required" /> <!-- con punto -->
+			<attribute name="numberTargets" type="positiveInteger" use="required"/>
+			<attribute name="screenHeight" type="positiveInteger" use="required"/>
+			<attribute name="screenWidth" type="positiveInteger" use="required"/>
+			<attribute name="version" type="string" use="required"/> 
+			<attribute name="date" type="date" use="required"/>  <!-- quitar tiempo, guardar sólo fecha en formato YYYY-MM-DD -->
+			<attribute name="timeOfDay" type="time" use="required"/>  <!-- quitar milisegundos; formato: hh:mm:ss --> 
+			<attribute name="caregiverId" type="string" use="optional"/>
+			<attribute name="userId" type="string" use="required" />
+		</complexType>
+	</element>
+</schema>

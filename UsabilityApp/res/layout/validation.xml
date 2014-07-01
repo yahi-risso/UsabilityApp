@@ -3,6 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/buttonGraphics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show graphics" />
+    
+	<Button
+        android:id="@+id/buttonBBDD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Database Operations" />
+
     <TextView
         android:id="@+id/textViewValidation"
         android:layout_width="match_parent"

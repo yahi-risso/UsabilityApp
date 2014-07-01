@@ -14,6 +14,6 @@
     version="1.0.0" 
     date="2014-06-10" 
     timeOfDay="05:09:21.7575867+02:00" 
-    caregiverId="yahi" 
-    userId="" 
+    caregiverId="terapeuta" 
+    userId="paciente" 
     xmlns="http://www.car.upm-csic.es/bioingenieria/Session" />

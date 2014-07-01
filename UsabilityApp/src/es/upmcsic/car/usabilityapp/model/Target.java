@@ -1,87 +1,88 @@
 package es.upmcsic.car.usabilityapp.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
-import android.graphics.Point;
+import android.util.Log;
 
 /**
  * Created by 66785338 on 27/05/14.
  */
-public class Target {
+public class Target implements Serializable {
 
 	int DISTANCE_SIZE = 1;
 	int VELOCITY_SIZE = 1;
-	
-	Point location;
-    int sizeX;
-    int sizeY;
-    List<Point> pointer;
-    Click click;
-    Float[] distance;//Comentario considerar usar array  y float por motivos de eficiencia
-    Float[] velocity;
-    
-    public Target(){
-    	//location = new Point(0,0);
-    	sizeX = 0;
-    	sizeY = 0;
-    	pointer = new ArrayList<Point>();
-    	click = new Click();
-    	distance = new Float[DISTANCE_SIZE];
-    	velocity = new Float[VELOCITY_SIZE];
-    }
 
-    public class Click{
-    	int T_SIZE = 1;
-    	int XY_SIZE = 1;
-    	int CLICK_OK_SIZE = 1;
-    	
-        private Point[] xy;
-        private int[] t;
-        private boolean[] clikOk;
+	MyPoint location;
+	int sizeX;
+	int sizeY;
+	ArrayList<MyPoint> pointer;
+	Click click;
+	Float[] distance;// Comentario considerar usar array y float por motivos de
+						// eficiencia
+	Float[] velocity;
 
-        public Click(){
-            setXy(new Point[XY_SIZE]);
-            setT(new int[T_SIZE]);
-            setClikOk(new boolean[CLICK_OK_SIZE]);
-        }
+	public Target() {
+		// location = new MyPoint(0,0);
+		sizeX = 0;
+		sizeY = 0;
+		pointer = new ArrayList<MyPoint>();
+		click = new Click();
+		distance = new Float[DISTANCE_SIZE];
+		velocity = new Float[VELOCITY_SIZE];
+	}
 
-        public Click(Point[] xy, int[] t, boolean[] clickOk){
-            this.setXy(xy);
-            this.setT(t);
-            this.setClikOk(clickOk);
-        }
+	public class Click implements Serializable {
+		int T_SIZE = 1;
+		int XY_SIZE = 1;
+		int CLICK_OK_SIZE = 1;
 
-        public int[] getT() {
-            return t;
-        }
+		private MyPoint[] xy;
+		private int[] t;
+		private boolean[] clikOk;
 
-        public void setT(int[] t) {
-            this.t = t;
-        }
+		public Click() {
+			setXy(new MyPoint[XY_SIZE]);
+			setT(new int[T_SIZE]);
+			setClikOk(new boolean[CLICK_OK_SIZE]);
+		}
 
-        public boolean[] getClikOk() {
-            return clikOk;
-        }
+		public Click(MyPoint[] xy, int[] t, boolean[] clickOk) {
+			this.setXy(xy);
+			this.setT(t);
+			this.setClikOk(clickOk);
+		}
 
-        public void setClikOk(boolean[] clikOk) {
-            this.clikOk = clikOk;
-        }
+		public int[] getT() {
+			return t;
+		}
 
-		public Point[] getXy() {
+		public void setT(int[] t) {
+			this.t = t;
+		}
+
+		public boolean[] getClikOk() {
+			return clikOk;
+		}
+
+		public void setClikOk(boolean[] clikOk) {
+			this.clikOk = clikOk;
+		}
+
+		public MyPoint[] getXy() {
 			return xy;
 		}
 
-		public void setXy(Point[] xy) {
+		public void setXy(MyPoint[] xy) {
 			this.xy = xy;
 		}
-    }
+	}
 
-	public Point getLocation() {
+	public MyPoint getLocation() {
 		return location;
 	}
 
-	public void setLocation(Point location) {
+	public void setLocation(MyPoint location) {
 		this.location = location;
 	}
 
@@ -101,11 +102,11 @@ public class Target {
 		this.sizeY = sizeY;
 	}
 
-	public List<Point> getPointer() {
+	public ArrayList<MyPoint> getPointer() {
 		return pointer;
 	}
 
-	public void setPointer(List<Point> pointer) {
+	public void setPointer(ArrayList<MyPoint> pointer) {
 		this.pointer = pointer;
 	}
 
@@ -132,57 +133,62 @@ public class Target {
 	public void setVelocity(Float[] velocity) {
 		this.velocity = velocity;
 	}
-	
-	public String toString(){
-		String result = "\tTARGET:\n";
-		result += "\tSixe X: "+getSizeX()+"\n";
-		result += "\tSixe Y: "+getSizeY()+"\n";
-		if(distance.length != 0 && null!=distance){
-			result += "\tDistance:\n\t\t";
-			for(float p:distance){
-				result += p+"|";
-			}
-			result += "\n";
-		}
-		if(velocity.length != 0 && null!=velocity){
-			result += "\tVelocity:\n\t\t";
-			for(float p:velocity){
-				result += p+"|";
-			}
-			result+="\n";
-		}
-		result += "\tLocation X: "+location.x+"\n";
-		result += "\tLocation Y: "+location.y+"\n";
-		if(!pointer.isEmpty() && null!=pointer){
-			result += "\tPointer:\n\t\t";
-			for(Point p:pointer){
-				result += p.toString()+"|";
-			}
-			result+="\n";
-		}
-		result += "\tCLICK:\n";
-		if(click.getXy().length !=0 && null!=click.getXy()){
-			result += "\t\tXY point:\n\t\t";
-			for(Point p:click.getXy()){
-				result += p.toString()+"|";
-			}
-			result+="\n";
-		}
-		if(click.getT().length !=0 && null!=click.getT()){
-			result += "\t\tT...integer:\n\t\t";
-			for(int myT:click.getT()){
-				result += myT+"|";
-			}
-			result+="\n";
-		}
-		if(click.getClikOk().length !=0 && null!=click.getClikOk()){
-			result += "\t\tCLickOK list:\n\t\t";
-			for(boolean b:click.getClikOk()){
-				result += b+"|";
-			}
-			result+="\n";
-		}
 
+	public String toString() {
+		String result = "*";
+		try {
+			result = "\tTARGET:\n";
+			result += "\tSixe X: " + getSizeX() + "\n";
+			result += "\tSixe Y: " + getSizeY() + "\n";
+			if (distance.length != 0 && null != distance) {
+				result += "\tDistance:\n\t\t";
+				for (float p : distance) {
+					result += p + "|";
+				}
+				result += "\n";
+			}
+			if (velocity.length != 0 && null != velocity) {
+				result += "\tVelocity:\n\t\t";
+				for (float p : velocity) {
+					result += p + "|";
+				}
+				result += "\n";
+			}
+			result += "\tLocation X: " + location.x + "\n";
+			result += "\tLocation Y: " + location.y + "\n";
+			result += "\tPointer:\n\t\t";
+			if (!pointer.isEmpty() && null != pointer) {
+				for (MyPoint p : pointer) {
+					result += p.toString() + "|";
+				}
+				result += "\n";
+			}
+			result += "\tCLICK:\n";
+			if (click.getXy().length != 0 && null != click.getXy()) {
+				result += "\t\tXY Point:\n\t\t";
+				for (MyPoint p : click.getXy()) {
+					result += p.toString() + "|";
+				}
+				result += "\n";
+			}
+			if (click.getT().length != 0 && null != click.getT()) {
+				result += "\t\tT...integer:\n\t\t";
+				for (int myT : click.getT()) {
+					result += myT + "|";
+				}
+				result += "\n";
+			}
+			if (click.getClikOk().length != 0 && null != click.getClikOk()) {
+				result += "\t\tCLickOK list:\n\t\t";
+				for (boolean b : click.getClikOk()) {
+					result += b + "|";
+				}
+				result += "\n";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.i("EXCEPTION ", e.getMessage());
+		}
 		return result;
 	}
 }

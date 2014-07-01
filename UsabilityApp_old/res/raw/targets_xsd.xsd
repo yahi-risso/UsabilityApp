@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.car.upm-csic.es/bioingenieria/Targets"    
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.car.upm-csic.es/bioingenieria/Targets"> 
+	<element name="Targets">
+		<complexType>
+			<sequence>
+				<element name="Target" minOccurs="1" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="Location" type="tns:Location" minOccurs="1" maxOccurs="1"></element>
+							<element name="Size" type="tns:Size" minOccurs="1" maxOccurs="1"></element>
+							<element name="Pointer" type="tns:Pointer" minOccurs="1" maxOccurs="1"></element>
+							<element name="Click" type="tns:Click" minOccurs="1" maxOccurs="1"></element>
+							<element name="Distance" minOccurs="1" maxOccurs="1">
+								<simpleType>
+									<list itemType="decimal"></list>  
+								</simpleType>
+							</element>  
+							<element name="Velocity" minOccurs="1" maxOccurs="1">
+								<simpleType>
+									<list itemType="decimal"></list>      
+								</simpleType>
+							</element>  
+						</sequence>
+					</complexType>
+				</element>
+				<element name="TotalSuccessRate" minOccurs="1" maxOccurs="1">
+					<complexType>
+						<attribute name="clickFailed" type="positiveInteger" use="required" />
+						<attribute name="clickSucceeded" type="positiveInteger" use="required"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<complexType name="Location">
+		<attribute name="y" type="positiveInteger"></attribute>
+		<attribute name="x" type="positiveInteger"></attribute>
+	</complexType>
+	
+	<complexType name="Size">
+		<attribute name="y" type="positiveInteger"></attribute>
+		<attribute name="x" type="positiveInteger"></attribute>
+	</complexType>
+	
+	<complexType name="Pointer">
+		<sequence>
+			<element name="X" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<list itemType="positiveInteger"></list>
+				</simpleType>
+			</element>
+			<element name="Y" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<list itemType="positiveInteger"></list>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="Click">
+		<sequence>
+			<element name="X" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<list itemType="positiveInteger"></list>
+				</simpleType>
+			</element>
+			<element name="Y" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<list itemType="positiveInteger"></list>
+				</simpleType>
+			</element>
+			<element name="T" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<list itemType="positiveInteger"></list>
+				</simpleType>
+			</element>
+			<element name="ClickOk" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<list itemType="boolean"></list>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+	
+</schema>

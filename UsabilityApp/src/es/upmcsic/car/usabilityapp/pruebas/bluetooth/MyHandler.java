@@ -3,8 +3,10 @@ package es.upmcsic.car.usabilityapp.pruebas.bluetooth;
 import android.os.Handler;
 import android.os.Message;
 
+import java.io.Serializable;
 import java.lang.ref.WeakReference;
 
+import es.upmcsic.car.usabilityapp.pruebas.io.ReadWriteActivity;
 import es.upmcsic.car.usabilityapp.xmlvalidator.ValidationActivity;
 
 /**
@@ -33,8 +35,13 @@ public class MyHandler extends Handler {
 		if(currentActivity.get() instanceof ValidationActivity){
 			ValidationActivity activity = (ValidationActivity)currentActivity.get();
 	        if (activity!= null){
-	            activity.updateResults(message.getData().getString("validation"));
+	        	if(message.getData().getString("validation") != null)
+	        		activity.updateResults(message.getData().getString("validation"));
+	        	if(message.getData().getString("infoDB") != null)
+	        		activity.updateResults(message.getData().getString("infoDB"));
 	        }
+	        Serializable ses = message.getData().getSerializable("session");
+	        if(ses!=null) activity.updateResults(ses);
 		}
     }
 }
